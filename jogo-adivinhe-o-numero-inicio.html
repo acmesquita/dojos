@@ -88,13 +88,22 @@
       }
     }
 
-    conferirPalpite++;
+    contagemPalpites++;
     campoPalpite.value = '';
     campoPalpite.focus();
-
+    console.log(contagemPalpites)
   }
 
   envioPalpite.addEventListener('click', conferirPalpite);
   
+  function configFimDeJogo() {
+    campoPalpite.disable = true;
+    envioPalpite.disable = true;
+    botaoReinicio = document.createElement('button');
+    botaoReinicio.textContent = 'Iniciar novo jogo';
+    document.body.appendChild(botaoReinicio);
+    botaoReinicio.addEventListener('click', reiniciarJogo);
+  }
+
 </script>
 </html>
