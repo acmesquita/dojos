@@ -71,7 +71,7 @@
       configFimDeJogo();
     }
     /*Caso tenham acabado com as chances*/
-    else if (conferirPalpite === 10){
+    else if (contagemPalpites === 10){
       ultimoResultado.textContent = '!!! FIM DE JOGO !!!';
       baixoOuAlto.textContent = '';
       configFimDeJogo();
@@ -103,6 +103,26 @@
     botaoReinicio.textContent = 'Iniciar novo jogo';
     document.body.appendChild(botaoReinicio);
     botaoReinicio.addEventListener('click', reiniciarJogo);
+  }
+
+  function reiniciarJogo (){
+    contagemPalpites = 1;
+    
+    var reniciarParas = document.querySelectorAll('.resultadoParas p');
+    for (let i = 0; i < reniciarParas.length; i++) {
+      reniciarParas[i].textContent = '';
+    } 
+
+    botaoReinicio.parentNode.removeChild(botaoReinicio);
+
+    campoPalpite.disable = false;
+    envioPalpite.disable = false;
+    campoPalpite.value = '';
+    campoPalpite.focus();
+    
+    ultimoResultado.style.backgroundColor = 'white';
+
+    numeroAleatorio = Math.floor(Math.random() * 100 )+ 1;
   }
 
 </script>
