@@ -55,6 +55,45 @@
   var botaoReinicio;
 
 
+  function conferirPalpite(){
+    /*Pegando o palpite do usuário*/
+    var palpiteUsuario = Number(campoPalpite.value)
+    if(contagemPalpites === 1){
+      palpites.textContent = 'Palpites anteriores: ';
+    }
+    palpites.textContent += palpiteUsuario + ' ';
+
+    /*Caso acertou o número*/
+    if(palpiteUsuario === numeroAleatorio){
+      ultimoResultado.textContent = 'Parabéns Viado! Você é um gênio da lâmpada!';
+      ultimoResultado.style.backgroundColor = 'green';
+      baixoOuAlto.textContent = '';
+      configFimDeJogo();
+    }
+    /*Caso tenham acabado com as chances*/
+    else if (conferirPalpite === 10){
+      ultimoResultado.textContent = '!!! FIM DE JOGO !!!';
+      baixoOuAlto.textContent = '';
+      configFimDeJogo();
+    }
+    /*Caso não tenha acertado o palpite*/
+    else {
+      ultimoResultado.textContent = 'Errado!';
+      ultimoResultado.style.backgroundColor = 'red';
+      /*Caso o palpite for menor*/
+      if (palpiteUsuario < numeroAleatorio){
+        baixoOuAlto.textContent = 'Seu palpite está baixo!';
+      }else if (palpiteUsuario > numeroAleatorio){
+        baixoOuAlto.textContent = 'Seu palpite está alto!';
+      }
+    }
+
+    conferirPalpite++;
+    campoPalpite.value = '';
+    campoPalpite.focus();
+    
+  }
+
   
 </script>
 </html>
